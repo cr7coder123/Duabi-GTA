@@ -3,10 +3,10 @@ var inCar=false;
 var carType="player"
 
 function preload() {
-  playerIMG = loadImage("Images/player.png");
-  playerAn = loadAnimation("Images/playerMove1.png", "Images/playerMove2.png");
+  playerIMG = loadImage("./Images/player.png");
+  playerAn = loadAnimation(".Images/playerMove1.png", "./Images/playerMove2.png");
   
-  ferrariIMG=loadImage("Images/Ferrari.png")
+  ferrariIMG=loadImage("./Images/Ferrari.png")
 
   dubaiIMG=loadImage("./Images/Dubai.png")
 
@@ -16,8 +16,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   //Arabian Gulf
-  Sea=createSprite(0,-700, 20000, 1000)
+  Sea=createSprite(0,-15200, 48500, 30000)
   Sea.shapeColor="#2176a8"
+  
 
   //Jumeirah Road
   JumRoad=createSprite(0, 200, 20000, 300);
@@ -49,6 +50,8 @@ function setup() {
 
   //Sheikh Zayed Bin Sultan Road
   SultanRoad=createSprite(-24850, -6000, 300, 28100)
+
+
 
 
   //Cars
@@ -83,7 +86,7 @@ function draw() {
   // For sprinting
   if (keyDown("shift")) {
     if (inCar===true){
-        moveNum+=80
+        moveNum=100
     }else{
       moveNum = 10;
     } 
