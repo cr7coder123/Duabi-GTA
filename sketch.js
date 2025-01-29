@@ -18,7 +18,6 @@ function setup() {
   //Arabian Gulf
   Sea=createSprite(0,-15200, 48500, 30000)
   Sea.shapeColor="#2176a8"
-  
 
   //Jumeirah Road
   JumRoad=createSprite(0, 200, 20000, 300);
@@ -27,32 +26,45 @@ function setup() {
   WaslRoad=createSprite(0,1325,20000, 200);
 
   //Sheikh Zayed Road
-  ZayedRoad=createSprite(-10000,2500,40000, 400);
+  ZayedRoad=createSprite(-15000,2500,50000, 400);
 
   //Emirates Road
-  EmiratesRoad=createSprite(-10000,7850,40000, 400);
+  EmiratesRoad=createSprite(-15000,7850,50000, 400);
 
   //Dubai Streets
-  street1=createSprite(-9900,4000, 200, 7300);
-  street2=createSprite(-7700,4000, 200, 7300);
-  street3=createSprite(-5500,4000, 200, 7300);
-  street4=createSprite(-3300,4000, 200, 7300);
-  street5=createSprite(-1100,4000, 200, 7300);
-  street6=createSprite(1100,4000, 200, 7300);
-  street7=createSprite(3300,4000, 200, 7300);
-  street8=createSprite(5500,4000, 200, 7300);
-  street9=createSprite(7700,4000, 200, 7300);
-  street10=createSprite(9900,4000, 200, 7300);
+  street1=createSprite(-9900, 10050, 200, 20000);
+  street2=createSprite(-7700, 10050, 200, 20000);
+  street3=createSprite(-5500, 10050, 200, 20000);
+  street4=createSprite(-3300, 10050, 200, 20000);
+  street5=createSprite(-1100, 10050, 200, 20000);
+  street6=createSprite(1100,  10050,  200,  20000);
+  street7=createSprite(3300,  10050,  200,  20000);
+  street8=createSprite(5500,  10050,  200,  20000);
+  street9=createSprite(7700,  10050,  200,  20000);
+  street10=createSprite(9900, 10050, 200, 20000);
+  //vertical
+  street20=createSprite(0, 19950, 20000, 300)
 
   //Abu Dhabi
   //SweihanRoad
-  SweihanRoad=createSprite(-30150, -6000, 300, 28100);
+  SweihanRoad=createSprite(-40150, -6000, 300, 28100);
 
   //Sheikh Zayed Bin Sultan Road
-  SultanRoad=createSprite(-24850, -6000, 300, 28100)
+  SultanRoad=createSprite(-24850, -6000, 300, 28100);
 
 
-
+  //Dubai Streets
+  //horizontal
+  street11=createSprite(-32500, -20000, 15600, 300);
+  street12=createSprite(-32500, -17000, 15600, 300);
+  street13=createSprite(-32500, -14000, 15600, 300);
+  street14=createSprite(-32500, -11000, 15600, 300);
+  street15=createSprite(-32500, -8000, 15600, 300);
+  street16=createSprite(-32500, -5000, 15600, 300);
+  street17=createSprite(-32500, -2000, 15600, 300);
+  street18=createSprite(-32500, 1000, 15600, 300);
+  //vertical
+  street19=createSprite(-32500, -8800, 300, 22500);
 
   //Cars
   ferrari=createSprite(120,250,10,10);
@@ -156,7 +168,7 @@ function draw() {
       player.y=360;
     }
 
-    
+  
    
 
   // Animation switching
@@ -212,6 +224,26 @@ function moveWorld(dx, dy) {
   street9.y += dy;
   street10.x += dx;
   street10.y += dy;
+  street11.x += dx;
+  street11.y += dy;
+  street12.x += dx;
+  street12.y += dy;
+  street13.x += dx;
+  street13.y += dy;
+  street14.x += dx;
+  street14.y += dy;
+  street15.x += dx;
+  street15.y += dy;
+  street16.x += dx;
+  street16.y += dy;
+  street17.x += dx;
+  street17.y += dy;
+  street18.x += dx;
+  street18.y += dy;
+  street19.x += dx;
+  street19.y += dy;
+  street20.x += dx;
+  street20.y += dy;
 }
 function drawMiniMap() {
   // Mini-map dimensions and position
@@ -225,51 +257,61 @@ function drawMiniMap() {
   let scaleY = mapHeight / 30000; // Scale for Y axis based on world height
 
   // Draw mini-map background
-  fill(200, 200, 200, 150); // Semi-transparent gray
+  fill(215, 198, 175, 150); // Semi-transparent gray
   rect(mapX, mapY, mapWidth, mapHeight);
 
-  // Draw roads on the mini-map
-  drawMiniRoad(JumRoad, mapX, mapY, scaleX, scaleY);
-  drawMiniRoad(WaslRoad, mapX, mapY, scaleX, scaleY);
-  drawMiniRoad(ZayedRoad, mapX, mapY, scaleX, scaleY);
-  drawMiniRoad(EmiratesRoad, mapX, mapY, scaleX, scaleY);
-  drawMiniRoad(SweihanRoad, mapX, mapY, scaleX, scaleY);
-  drawMiniRoad(SultanRoad, mapX, mapY, scaleX, scaleY);
+  //Sea
+  drawMini(Sea,mapX, mapY, scaleX, scaleY, "#2176a8")
 
-  // Draw the streets
-  for (let road of [street1, street2, street3, street4, street5, street6, street7, street8, street9, street10]) {
-    drawMiniRoad(road, mapX, mapY, scaleX, scaleY);
+  // Draw roads on the mini-map
+  drawMini(JumRoad, mapX+59, mapY+75, scaleX, scaleY, "black");
+  drawMini(WaslRoad, mapX+59, mapY+75, scaleX, scaleY, "black");
+  drawMini(ZayedRoad, mapX-3, mapY+75, scaleX, scaleY, "black");
+  drawMini(EmiratesRoad, mapX-3, mapY+75, scaleX, scaleY, "black");
+  drawMini(SweihanRoad, mapX+100, mapY+5, scaleX, scaleY, "black");
+  drawMini(SultanRoad, mapX+100, mapY+5, scaleX, scaleY, "black");
+
+  // Dubai Streets
+  for (let vDubaiRoad of [street1, street2, street3, street4, street5, street6, street7, street8, street9, street10]) {
+    drawMini(vDubaiRoad, mapX+100, mapY+27, scaleX, scaleY, "black");
+  }
+  for (let hDubaiRoad of [street20]) {
+    drawMini(hDubaiRoad, mapX+59.5, mapY+76, scaleX, scaleY, "black");
+  }
+
+  //Abu DHabi horizontal
+  for (let hAbuRoad of [street11, street12, street13, street14, street15, street16, street17, street18]) {
+    drawMini(hAbuRoad, mapX+68.5, mapY+75, scaleX, scaleY, "black");
+  }
+
+  //veritical
+  for (let vAbuRoad of [street19]){
+    drawMini(vAbuRoad, mapX+100, mapY+20, scaleX, scaleY, "black");
   }
 
   // Draw the player on the mini-map
-  fill(255, 0, 0); // Red for the player
-  let playerMiniX = mapX + player.x * scaleX;
-  let playerMiniY = mapY + player.y * scaleY;
+  fill(0, 0, 255); // Red for the player
+  let playerMiniX = mapX+100 + player.x * scaleX;
+  let playerMiniY = mapY+75 + player.y * scaleY;
   ellipse(playerMiniX, playerMiniY, 5, 5); // Small dot for the player
 
   // Draw the car if the player is in it
   if (inCar) {
-    fill(0, 0, 255); // Blue for the car
-    let carMiniX = mapX + ferrari.x * scaleX;
-    let carMiniY = mapY + ferrari.y * scaleY;
+    fill(255, 0, 0); // Blue for the car
+    let carMiniX = mapX+100 + ferrari.x * scaleX;
+    let carMiniY = mapY+75 + ferrari.y * scaleY;
     ellipse(carMiniX, carMiniY, 5, 5); // Small dot for the car
   }
 }
 
 // Helper function to draw roads on the mini-map
-function drawMiniRoad(road, mapX, mapY, scaleX, scaleY) {
-  let roadMiniX = mapX + road.x * scaleX;
-  let roadMiniY = mapY + road.y * scaleY;
-  let roadMiniWidth = road.width * scaleX;
-  let roadMiniHeight = road.height * scaleY;
+function drawMini(object, mapX, mapY, scaleX, scaleY, colour) {
+  let MiniX = mapX + object.x * scaleX;
+  let MiniY = mapY + object.y * scaleY;
+  let MiniWidth = object.width * scaleX;
+  let MiniHeight = object.height * scaleY;
 
-  // Draw the road only if it's inside the mini-map boundaries
-  if (
-    roadMiniX + roadMiniWidth > mapX && // Road is partially or fully within mini-map X bounds
-    roadMiniX < mapX + 200 && // Road is partially or fully within mini-map X bounds
-    roadMiniY + roadMiniHeight > mapY && // Road is partially or fully within mini-map Y bounds
-    roadMiniY < mapY + 150 // Road is partially or fully within mini-map Y bounds
-  ) {
-    rect(roadMiniX, roadMiniY, roadMiniWidth, roadMiniHeight);
-  }
+  fill(colour)
+  rect(MiniX, MiniY, MiniWidth, MiniHeight);
+  
 }
