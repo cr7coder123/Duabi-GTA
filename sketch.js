@@ -3,12 +3,13 @@ var inCar=false;
 var carType="player"
 
 function preload() {
-  playerIMG = loadImage("../Images/player.png");
-  playerAn = loadAnimation("../Images/playerMove1.png", "../Images/playerMove2.png");
+  playerIMG = loadImage("./Images/player.png");
+  playerAn = loadAnimation("./Images/playerMove1.png", "./Images/playerMove2.png");
   
   ferrariIMG=loadImage("./Images/Ferrari.png")
+  civicIMG=loadImage("./Images/Civic.png")
 
-  dubaiIMG=loadImage("../Images/Dubai.png")
+  homeIMG=loadImage("./Images/Home.png")
 
 }
 
@@ -16,7 +17,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   //Arabian Gulf
-  Sea=createSprite(0,-15200, 48500, 30000)
+  Sea=createSprite(10000,-30500, 68500, 60000)
   Sea.shapeColor="#2176a8"
 
   //Jumeirah Road
@@ -50,7 +51,7 @@ function setup() {
   SweihanRoad=createSprite(-40150, -6000, 300, 28100);
 
   //Sheikh Zayed Bin Sultan Road
-  SultanRoad=createSprite(-24850, -6000, 300, 28100);
+  SultanRoad=createSprite(-24850, -8800, 300, 22500);
 
 
   //Dubai Streets
@@ -90,6 +91,8 @@ function draw() {
   player.x=150;
   player.y=360;
   moveNum=5
+
+
 
   if (inCar===true){
     moveNum=20
@@ -177,7 +180,7 @@ function draw() {
   } else {
     player.changeAnimation("standing");
   }
- 
+
 
   drawSprites();
 
@@ -261,7 +264,7 @@ function drawMiniMap() {
   rect(mapX, mapY, mapWidth, mapHeight);
 
   //Sea
-  drawMini(Sea,mapX, mapY, scaleX, scaleY, "#2176a8")
+  drawMini(Sea,mapX-38, mapY-75, scaleX, scaleY, "#2176a8")
 
   // Draw roads on the mini-map
   drawMini(JumRoad, mapX+59, mapY+75, scaleX, scaleY, "black");
@@ -269,7 +272,7 @@ function drawMiniMap() {
   drawMini(ZayedRoad, mapX-3, mapY+75, scaleX, scaleY, "black");
   drawMini(EmiratesRoad, mapX-3, mapY+75, scaleX, scaleY, "black");
   drawMini(SweihanRoad, mapX+100, mapY+5, scaleX, scaleY, "black");
-  drawMini(SultanRoad, mapX+100, mapY+5, scaleX, scaleY, "black");
+  drawMini(SultanRoad, mapX+100, mapY+20, scaleX, scaleY, "black");
 
   // Dubai Streets
   for (let vDubaiRoad of [street1, street2, street3, street4, street5, street6, street7, street8, street9, street10]) {
@@ -312,6 +315,7 @@ function drawMini(object, mapX, mapY, scaleX, scaleY, colour) {
   let MiniHeight = object.height * scaleY;
 
   fill(colour)
+  stroke(colour)
   rect(MiniX, MiniY, MiniWidth, MiniHeight);
   
 }
